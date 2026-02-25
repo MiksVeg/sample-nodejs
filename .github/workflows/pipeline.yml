@@ -51,6 +51,9 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-1
 
+    - name: Who am I
+      run: aws sts get-caller-identity
+
     - name: Update kubeconfig
       run: aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
 
