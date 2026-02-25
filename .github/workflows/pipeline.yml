@@ -54,11 +54,6 @@ jobs:
     - name: Update kubeconfig
       run: aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
 
-    - name: Configure kubectl
-      run: |
-        mkdir -p ~/.kube
-        echo "${{ secrets.KUBE_CONFIG }}" > ~/.kube/config
-
     - name: Deploy to Kubernetes
       run: |
         kubectl set image deployment/node-app node-app=$IMAGE_NAME:$IMAGE_TAG
