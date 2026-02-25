@@ -51,11 +51,10 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: ap-south-1
 
-    - name: Who am I
-      run: aws sts get-caller-identity
 
     - name: Deploy to Kubernetes
       run: |
+        pwd
         kubectl apply -f /k8s/.
         kubectl rollout status deployment/node-app
         kubectl get svc
