@@ -54,9 +54,6 @@ jobs:
     - name: Who am I
       run: aws sts get-caller-identity
 
-    - name: Update kubeconfig
-      run: aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
-
     - name: Deploy to Kubernetes
       run: |
         kubectl set image deployment/node-app node-app=$IMAGE_NAME:$IMAGE_TAG
